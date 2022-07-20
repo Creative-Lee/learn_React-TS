@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Greetings from './Greetings'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const [whatever, setWhatever] = useState('무엇이든지 다 가능해요!')
+	const everyNumber = 12345
+	const greetingsChildren = {
+		whatever: (
+			<h5>
+				{whatever} --{'>'} 이건 children으로 전달한 state
+			</h5>
+		),
+		number: (
+			<h5>
+				{everyNumber} --{'>'} children으로 전달한 const 변수
+			</h5>
+		),
+		string: <h5>그냥 inner html 전달</h5>,
+	}
+
+	// const greetingsProps = {
+	// 	setWhatever: setWhatever,
+	// 	name: '도현',
+	// 	mark: '병장',
+	// }
+
+	return (
+		<div>
+			<Greetings>{greetingsChildren}</Greetings>
+		</div>
+	)
 }
 
-export default App;
+export default App
