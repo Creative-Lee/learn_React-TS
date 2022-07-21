@@ -1,33 +1,37 @@
 import React, { useState } from 'react'
-import Greetings from './Greetings'
+import DiaryEditor from './DiaryEditor'
+import DiaryList from './DiaryList'
+import './App.css'
 
 const App = () => {
-	const [whatever, setWhatever] = useState('무엇이든지 다 가능해요!')
-	const everyNumber = 12345
-	const greetingsChildren = {
-		whatever: (
-			<h5>
-				{whatever} --{'>'} 이건 children으로 전달한 state
-			</h5>
-		),
-		number: (
-			<h5>
-				{everyNumber} --{'>'} children으로 전달한 const 변수
-			</h5>
-		),
-		string: <h5>그냥 inner html 전달</h5>,
-	}
-
-	// const greetingsProps = {
-	// 	setWhatever: setWhatever,
-	// 	name: '도현',
-	// 	mark: '병장',
-	// }
-
+	const dummyList = [
+		{
+			id: 1,
+			author: 'BOB',
+			content: 'dummy',
+			emotion: 1,
+			createdDate: new Date().getTime(),
+		},
+		{
+			id: 2,
+			author: 'GOD',
+			content: 'dummy',
+			emotion: 2,
+			createdDate: new Date().getTime(),
+		},
+		{
+			id: 3,
+			author: 'GANG',
+			content: 'dummy',
+			emotion: 3,
+			createdDate: new Date().getTime(),
+		},
+	]
 	return (
-		<div>
-			<Greetings>{greetingsChildren}</Greetings>
-		</div>
+		<>
+			<DiaryEditor />
+			<DiaryList dummyList={dummyList} />
+		</>
 	)
 }
 
