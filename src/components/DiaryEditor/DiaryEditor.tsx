@@ -1,10 +1,15 @@
 import React, { useRef, useState } from 'react'
+import { OnCreate, OnChangeHTMLElement } from '../../types'
 
-const DiaryEditor = () => {
-	type InputRef = {
-		author: HTMLInputElement | null
-		content: HTMLTextAreaElement | null
-	}
+type InputRef = {
+	author: HTMLInputElement | null
+	content: HTMLTextAreaElement | null
+}
+type DiaryEditorProps = {
+	onCreate: OnCreate
+}
+
+const DiaryEditor = ({ onCreate }: DiaryEditorProps) => {
 	const inputRef = useRef<InputRef>({
 		author: null,
 		content: null,
@@ -15,11 +20,8 @@ const DiaryEditor = () => {
 		content: '',
 		emotion: 1,
 	})
-	const onChangeState = (
-		e: React.ChangeEvent<
-			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-		>,
-	) => {
+
+	const onChangeState: OnChangeHTMLElement = (e) => {
 		setState({ ...state, [e.target.name]: e.target.value })
 	}
 
@@ -41,8 +43,8 @@ const DiaryEditor = () => {
 			})
 			return
 		}
-		console.log(state)
 		alert('저장성공')
+		onCreate(state.content, state.author, state.emotion)
 		setState((prev) => {
 			prev.content = ''
 			prev.author = ''
