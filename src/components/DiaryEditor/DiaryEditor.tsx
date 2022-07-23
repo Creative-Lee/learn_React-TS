@@ -44,7 +44,7 @@ const DiaryEditor = ({ onCreate }: DiaryEditorProps) => {
 			return
 		}
 		alert('저장성공')
-		onCreate(state.content, state.author, state.emotion)
+		onCreate(state.author, state.content, state.emotion)
 		setState((prev) => {
 			prev.content = ''
 			prev.author = ''
