@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { DiaryItemData, OnEdit, OnRemove } from '../../../types'
 
 type DiaryItemProps = {
@@ -37,6 +37,9 @@ const DiaryItem = ({
 		toggleIsEdit()
 	}
 
+	useEffect(() => {
+		console.log(`${id}번째 컨텐츠 랜더링`)
+	})
 	return (
 		<div className='DiaryItem'>
 			<div className='info'>
@@ -77,7 +80,14 @@ const DiaryItem = ({
 						>
 							삭제하기
 						</button>
-						<button onClick={toggleIsEdit}>수정하기</button>
+						<button
+							onClick={() => {
+								toggleIsEdit()
+								setLocalContent((prev) => content)
+							}}
+						>
+							수정하기
+						</button>
 					</>
 				)}
 			</div>
@@ -85,4 +95,4 @@ const DiaryItem = ({
 	)
 }
 
-export default DiaryItem
+export default React.memo(DiaryItem)

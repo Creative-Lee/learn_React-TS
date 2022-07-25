@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { OnCreate, OnChangeHTMLElement } from '../../types'
 
 type InputRef = {
@@ -92,4 +92,4 @@ const DiaryEditor = ({ onCreate }: DiaryEditorProps) => {
 	)
 }
 
-export default DiaryEditor
+export default React.memo(DiaryEditor)
