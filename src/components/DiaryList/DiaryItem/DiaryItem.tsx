@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { DiaryItemData, OnEdit, OnRemove } from '../../../types'
+import React, { useEffect, useRef, useState } from 'react'
+import { OnEdit, OnRemove } from '../../../types'
 
 type DiaryItemProps = {
 	content: string

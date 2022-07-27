@@ -2,6 +2,12 @@ export type OnCreate = (author: string, content: string, emotion: number) => voi
 export type OnRemove = (id: number) => void
 export type OnEdit = (id: number, newContent: string) => void
 
+export interface DispatchContext {
+	onCreate: OnCreate
+	onRemove: OnRemove
+	onEdit: OnEdit
+}
+
 export type OnChangeHTMLElement = (
 	e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
 ) => void

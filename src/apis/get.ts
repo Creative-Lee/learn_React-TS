@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { DiaryItemData } from '../types'
 
 interface Data {
 	postId: number

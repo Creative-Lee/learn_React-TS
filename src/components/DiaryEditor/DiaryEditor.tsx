@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { OnCreate, OnChangeHTMLElement } from '../../types'
+import React, { useRef, useState } from 'react'
+import { useContext } from 'react'
+import { DiaryDispatchContext } from '../../App'
+import { OnChangeHTMLElement } from '../../types'
 
 type InputRef = {
 	author: HTMLInputElement | null
 	content: HTMLTextAreaElement | null
 }
-type DiaryEditorProps = {
-	onCreate: OnCreate
-}
 
-const DiaryEditor = ({ onCreate }: DiaryEditorProps) => {
+const DiaryEditor = () => {
 	const inputRef = useRef<InputRef>({
 		author: null,
 		content: null,
 	})
+	const { onCreate } = useContext(DiaryDispatchContext)
 
 	const [state, setState] = useState({
 		author: '',
